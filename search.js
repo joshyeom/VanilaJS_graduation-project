@@ -7,4 +7,4 @@ function search(event) {
   location.href = "https://www.google.com/search?q=" + searchValue;
 }
 
-searchBar.addEventListener("submit", search);
+searchBox.addEventListener("submit", search);
