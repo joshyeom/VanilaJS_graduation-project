@@ -13,11 +13,11 @@ function onGeoOk(position) {
     });
 }
 function geoIcon(data) {
-  let weather = data.weather[0]["main"];
+  let weather = data.weather[0].main;
   if (weather === "Clouds") {
     const clouds = document.querySelector(".clouds");
     clouds.classList.remove("none");
-  } else if (weather === "clearsky") {
+  } else if (weather === "Clear") {
     const clearSky = doucment.querySelector(".clear-sky");
     clouds.classlist.remove("none");
   } else if (weather === "fewclouds") {
@@ -49,4 +49,4 @@ function geoIcon(data) {
 function onGeoError() {
   alert("Please check your location");
 }
-navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError, geoIcon);
+navigator.geolocation.getCurrentPosition(geoIcon);
