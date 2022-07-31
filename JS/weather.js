@@ -14,17 +14,17 @@ function onGeoOk(position) {
       const icon = document.querySelector("#weather i:last-child");
       const weatherIcon = data.weather.main;
       if (weatherIcon === "Clouds") {
-        icon.classList.add("fa-solid, fa-cloud");
+        icon.classList.add("fs-solid", "fa-cloud");
       } else if (weatherIcon === "Thunderstorm") {
-        icon.classList.add("fa-solid, fa-cloud-bolt");
+        icon.classList.add("fs-solid", "fa-cloud-bolt");
       } else if (weatherIcon === "Drizzle") {
-        icon.classList.add("fa-solid, fa-cloud-drizzle");
+        icon.classList.add("fs-solid", "fa-cloud-drizzle");
       } else if (weatherIcon === "Rain") {
-        icon.classList.add("fa-solid, fa-raindrops");
+        icon.classList.add("fs-solid", "fa-raindrops");
       } else if (weatherIcon === "Snow") {
-        icon.classList.add("fa-solid, fa-snowflake");
+        icon.classList.add("fs-solid", "fa-snowflake");
       } else if (weatherIcon === "Clear") {
-        icon.classList.add("fa-solid, fa-sun");
+        icon.classList.add("fs-solid", "fa-sun");
       }
     });
 }
