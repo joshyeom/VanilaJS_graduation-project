@@ -7,46 +7,28 @@ function onGeoOk(position) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      const city = document.querySelector("#weather span:last-child");
+      const city = document.querySelector("#weather span:first-child");
       city.innerText = data.name;
-      const temp = Math.floor(data.main.temp) + "º"; //선언 후 백틱으로
+      const temp = document.querySelector("#weather span:nth-child(2)");
+      temp.innerText = Math.floor(data.main.temp) + "º";
+      const icon = document.querySelector("#weather i:last-child");
+      const weatherIcon = data.weather.main;
+      if (weatherIcon === "Clouds") {
+        icon.classList.add("fa-solid, fa-cloud");
+      } else if (weatherIcon === "Thunderstorm") {
+        icon.classList.add("fa-solid, fa-cloud-bolt");
+      } else if (weatherIcon === "Drizzle") {
+        icon.classList.add("fa-solid, fa-cloud-drizzle");
+      } else if (weatherIcon === "Rain") {
+        icon.classList.add("fa-solid, fa-raindrops");
+      } else if (weatherIcon === "Snow") {
+        icon.classList.add("fa-solid, fa-snowflake");
+      } else if (weatherIcon === "Clear") {
+        icon.classList.add("fa-solid, fa-sun");
+      }
     });
-}
-function geoIcon(data) {
-  let weather = data.weather[0].main;
-  if (weather === "Clouds") {
-    const clouds = document.querySelector(".clouds");
-    clouds.classList.remove("none");
-  } else if (weather === "Clear") {
-    const clearSky = doucment.querySelector(".clear-sky");
-    clouds.classlist.remove("none");
-  } else if (weather === "fewclouds") {
-    const fewClouds = doucment.querySelector(".few-clouds");
-    fewClouds.classlist.remove("none");
-  } else if (weather === "scatteredclouds") {
-    const scatteredClouds = doucment.querySelector(".scattered-clouds");
-    scatteredClouds.classlist.remove("none");
-  } else if (weather === "brokenclouds") {
-    const brokenClouds = doucment.querySelector(".broken-clouds");
-    brokenClouds.classlist.remove("none");
-  } else if (weather === "showerrain") {
-    const showerRain = doucment.querySelector(".shower-rain");
-    showerRain.classlist.remove("none");
-  } else if (weather === "rain") {
-    const rain = doucment.querySelector(".rain");
-    rain.classlist.remove("none");
-  } else if (weather === "thunderstorm") {
-    const thunderstorm = doucment.querySelector(".thunderstorm");
-    thunderstorm.classlist.remove("none");
-  } else if (weather === "snow") {
-    const snow = doucment.querySelector(".snow");
-    snow.classlist.remove("none");
-  } else if (weather === "mist") {
-    const mist = doucment.querySelector(".mist");
-    mist.classlist.remove("none");
-  }
 }
 function onGeoError() {
   alert("Please check your location");
 }
-navigator.geolocation.getCurrentPosition(geoIcon);
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
