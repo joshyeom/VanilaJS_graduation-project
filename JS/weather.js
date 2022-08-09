@@ -11,17 +11,16 @@ function onGeoOk(position) {
       city.innerText = data.name;
       const temp = document.querySelector("#weather span:nth-child(2)");
       temp.innerText = Math.floor(data.main.temp) + "º";
-      const icon = document.querySelector("#weather i");
-      const weatherInfo = data.weather.main[0];
-      switch (weatherInfo) {
-        case "Rain":
-          icon.classList.add("fa-solid", "fa-droplet");
-        case "Clear":
-          icon.classList.add("fa-solid", "fa-sun");
+      const weatherIcon = document.querySelector("#weather i");
+      const weatherInfo = data.weather[0].main;
+      console.log(weatherInfo);
+      if (weatherInfo === "Rain") {
+        weatherIcon.classList.add("fa-solid", "fa-cloud-rain");
       }
     });
 }
 function onGeoError() {
   alert("Please check your location");
 }
+typeof weatherInfo;
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
