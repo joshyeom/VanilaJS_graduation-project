@@ -56,6 +56,9 @@ function onGeoOk(position) {
         case "Clear":
           weatherIcon.classList.add("fa-solid", "fa-sun");
           break;
+        case "Clouds":
+          weatherIcon.classList.add("fa-solid", "fa-cloud");
+          break;
       }
     });
 }
